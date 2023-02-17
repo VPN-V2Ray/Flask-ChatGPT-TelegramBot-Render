@@ -16,7 +16,7 @@ chat_language = os.getenv("INIT_LANGUAGE", default = "zh")
 	
 MSG_LIST_LIMIT = int(os.getenv("MSG_LIST_LIMIT", default = 20))
 LANGUAGE_TABLE = {
-	  "zh": "哈囉！",
+	  "zh": "您好！",
 	  "en": "Hello!"
 	}
 
@@ -56,10 +56,10 @@ class ChatGPT:
 	            max_tokens=self.max_tokens
                 )
         
-        print("AI回答內容：")        
+        print("ChatGPT回答內容：")        
         print(response['choices'][0]['text'].strip())
 
-        print("AI原始回覆資料內容：")      
+        print("ChatGPT原始回复资料內容：")      
         print(response)
         
         return response['choices'][0]['text'].strip()
@@ -115,7 +115,7 @@ def reply_handler(bot, update):
     chatgpt.prompt.add_msg(update.message.text) #人類的問題
     ai_reply_response = chatgpt.get_response() #ChatGPT產生的回答
     
-    update.message.reply_text(ai_reply_response) #用AI的文字回傳
+    update.message.reply_text(ai_reply_response) #用ChatGPT的文字回傳
 
 # New a dispatcher for bot
 dispatcher = Dispatcher(bot, None)
